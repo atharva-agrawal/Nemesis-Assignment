@@ -27,7 +27,11 @@ const CONNECTION_URL = 'mongodb+srv://atharvaagrawal:Atharva@12345@cluster0.ylfk
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(CONNECTION_URL, {
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
+
+mongoose.connect( process.env.MONGODB_URI || CONNECTION_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
 }).then(() => app.listen(PORT, () =>
     console.log(`Connection is established and running on port: ${PORT}`)

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "build": "cd client && npm run build",
+  "install_client": "cd client && npm install",
+  "heroku-postbuild": "npm run install_client && npm run build",
   "type": "module",
   "scripts": {
     "start": "nodemon index.js"
