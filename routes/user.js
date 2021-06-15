@@ -3,8 +3,14 @@ import { getUsers, createUsers, deleteUsers } from '../controllers/user.js';
 
 const router = express.Router();
 
-router.get('/', getUsers);
-router.post('/create', createUsers);
-router.delete('/:id', deleteUsers);
+router.get('/', (req, res) => {
+    res.redirect(getUsers);
+});
+router.post('/', (req, res) => {
+    res.redirect(createUsers);
+});
+router.delete('/', (req, res) => {
+    res.redirect(deleteUsers);
+});
 
 export default router;
